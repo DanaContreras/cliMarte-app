@@ -25,7 +25,7 @@ export const HomeScreen = ({route, navigation}: Props) => {
           <Text style={[FONTS.h2, {color: 'white'}]}>Sol 325</Text>
         </View>
         <View style={styles.footerImg}>
-          <Icon name={ICON_NAME.camera} color={COLORS.white} size={SIZES.icon1} onPress={() => navigation.navigate(SCREEN_NAV.dailyImg)}/>
+          <Icon name={ICON_NAME.camera} color={COLORS.white} size={SIZES.icon2} onPress={() => navigation.navigate(SCREEN_NAV.dailyImg)}/>
           <Text style={[FONTS.h2, styles.textPlace, {color: COLORS.gray}]}>{place}</Text>
         </View>
       </View>

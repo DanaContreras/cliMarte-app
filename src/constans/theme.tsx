@@ -24,8 +24,8 @@ export const SIZES = {
     radius3: 20,
 
     // font sizes
-    h1: 28,
-    h2: 24,
+    h1: 24,
+    h2: 20,
     h3: 18,
     body: 15,
     number1: 96,
@@ -33,6 +33,7 @@ export const SIZES = {
 
     // icon sizes
     icon1: 40,
+    icon2: 35,
 
     // app dimensions
     width,
