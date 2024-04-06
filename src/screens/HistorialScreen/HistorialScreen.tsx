@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, FlatList} from 'react-native';
+import {View, Text, FlatList, StatusBar} from 'react-native';
 import {SCREEN_NAV, SCREEN_OPTION} from '../../constans/constans';
 import {COLORS} from '../../constans/theme';
 import LinearGradient from 'react-native-linear-gradient';
@@ -68,6 +68,7 @@ const data = [
 export const HistorialScreen = ({navigation}: Props) => {
   return (
     <View style={styles.container}>
+      <StatusBar backgroundColor={COLORS.darkBlue} translucent={true} barStyle='light-content' />
       <LinearGradient
         colors={[COLORS.darkBlue, COLORS.orange]}
         start={{x: 0.5, y: 0.5}}
