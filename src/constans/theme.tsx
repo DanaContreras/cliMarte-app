@@ -34,6 +34,7 @@ export const SIZES = {
     // icon sizes
     icon1: 40,
     icon2: 35,
+    bigIcon: 60,
 
     // app dimensions
     width,
@@ -42,8 +43,9 @@ export const SIZES = {
 
 export const FONTS = {
     h1: { fontFamily: 'LeagueSpartan-Bold', fontSize: SIZES.h1, lineHeight: 36, color: COLORS.white },
-    h2: { fontFamily: 'LeagueSpartan-Bold', fontSize: SIZES.h2, lineHeight: 30 },
+    h2: { fontFamily: 'LeagueSpartan-Bold', fontSize: SIZES.h2, lineHeight: 20, color: COLORS.white },
     h3: { fontFamily: 'LeagueSpartan-SemiBold', fontSize: SIZES.h3, lineHeight: 22 },
-    body: { fontFamily: 'LeagueSpartan-Regular', fontSize: SIZES.body, lineHeight: 30 },
+    body: { fontFamily: 'LeagueSpartan-Regular', fontSize: SIZES.body, lineHeight: 20, color: COLORS.white},
+    error: { fontFamily: 'LeagueSpartan-Regular', fontSize: SIZES.body, color: 'red'},
     fontRegular: {fontFamily: 'LeagueSpartan-Regular'},
 };

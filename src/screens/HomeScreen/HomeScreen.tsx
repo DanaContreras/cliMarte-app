@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, ScrollView, Text, View} from 'react-native';
+import {Image, ScrollView, StatusBar, Text, View} from 'react-native';
 import { styles } from './styles';
 import LinearGradient from 'react-native-linear-gradient';
 import { COLORS, FONTS, SIZES } from '../../constans/theme';
@@ -12,9 +12,10 @@ import { place } from '../../constans/information';
 
 interface Props extends StackScreenProps<any,any>{}
 
-export const HomeScreen = ({route, navigation}: Props) => {
+export const HomeScreen = ({navigation}: Props) => {
   return(
     <ScrollView style={styles.container}>
+      <StatusBar backgroundColor="transparent" translucent={true} barStyle='light-content' />
       <View style={styles.containerImg}>
         <Image source={require('../../assets/images/imagenMarte1.jpg')} style={styles.img}/>
         <View style={styles.tempContainer}>
