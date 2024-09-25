@@ -14,10 +14,12 @@ import CustomButton from '../CustomButton/CustomButton';
 import {CustomInput} from '../CustomInput/CustomInput';
 import {Field, Formik, FormikValues} from 'formik';
 import * as yup from 'yup';
+import { useCommentsViewModel } from '../../viewModels/useCommentsViewModel';
 
 interface Props {
   visible: boolean;
   onRequestClose: () => void;
+  onAddComment: (userName: string, mail: string, comment: string) => void;
 }
 
 // Interfaz para manejar los datos del formulario.
@@ -27,7 +29,7 @@ interface FormData {
   comment: string;
 }
 
-export const CommentModal = ({visible, onRequestClose}: Props) => {
+export const CommentModal = ({visible, onRequestClose, onAddComment}: Props) => {
 
   // Verificacion de cada input dentro del formulario
   const validationSchema = yup.object().shape({
@@ -46,7 +48,7 @@ export const CommentModal = ({visible, onRequestClose}: Props) => {
   });
 
   const handleSubmit = (values: FormikValues) => {
-    // TODO: Agregar la logica del POST
+    onAddComment(values.name, values.email, values.comment);
     onRequestClose();
   };
 

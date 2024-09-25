@@ -49,6 +49,7 @@ export const styles = StyleSheet.create({
   noCommentsText: {
     color: COLORS.gray,
     alignSelf: 'center',
+    marginBottom: SIZES.margin * 2,
   },
   divider: {
     color: COLORS.white,
