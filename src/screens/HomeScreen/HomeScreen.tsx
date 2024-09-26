@@ -9,18 +9,33 @@ import { WeatherCard } from '../../components/WeatherCard/WeatherCard';
 import { BUTTON_OPTION, ICON_NAME, MEASUREMENT, SCREEN_NAV } from '../../constans/constans';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import { place } from '../../constans/information';
+import { useDailyImageViewModel } from '../../viewModels/useDailyImageViewModel';
+import * as Animatable from 'react-native-animatable';
 
 interface Props extends StackScreenProps<any,any>{}
 
 export const HomeScreen = ({navigation}: Props) => {
+  const { dailyImage, error } = useDailyImageViewModel();
+
+  console.log('dailyImage: ', dailyImage, 'error: ', error);
+
   return(
     <ScrollView style={styles.container}>
       <StatusBar backgroundColor="transparent" translucent={true} barStyle='light-content' />
       <View style={styles.containerImg}>
-        <Image source={require('../../assets/images/imagenMarte1.jpg')} style={styles.img}/>
+        {error || dailyImage == null || dailyImage.media_type != 'image' ?
+          <Image source={require('../../assets/images/imagenMarte1.jpg')} style={styles.img}/>
+          :
+          <Image
+          source={{ uri: dailyImage.url }}
+          style={styles.img}
+          />
+        }
         <View style={styles.tempContainer}>
           <View style={styles.celsiusContainer}>
-            <Text style={[styles.textTemp, {color: 'white'}]}>-58</Text>
+            <Animatable.Text animation='bounceIn' style={[styles.textTemp, {color: 'white'}]}>
+              {-58}
+            </Animatable.Text>
             <Text style={[FONTS.h1, styles.fixMargin, {color: 'white'}]}>°C</Text>
           </View>
           <Text style={[FONTS.h2, {color: 'white'}]}>Sol 325</Text>

@@ -1,6 +1,5 @@
 import RNFS from 'react-native-fs';
 
-const path = RNFS.DocumentDirectoryPath + '/dailyImage.json';
 const pathComments = RNFS.DocumentDirectoryPath + '/commentsImage.json';
 
 export interface Comment {
@@ -71,5 +70,17 @@ const saveComment = async (comments: Comment[]) => {
     await RNFS.writeFile(pathComments, JSON.stringify(comments), 'utf8');
   } catch (error) {
     console.error('Error guardando los datos localmente:', error);
+  }
+};
+
+export const deleteComments = async () => {
+  try {
+    const fileExists = await RNFS.exists(pathComments);
+    if (fileExists) {
+      await RNFS.unlink(pathComments);
+      console.log('Archivo eliminado exitosamente:', pathComments);
+    }
+  } catch (error) {
+    console.error('Error eliminando el archivo:', error);
   }
 };

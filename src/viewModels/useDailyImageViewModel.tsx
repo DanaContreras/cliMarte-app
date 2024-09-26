@@ -3,17 +3,21 @@ import {getDailyImage} from '../models/DailyImageModel';
 
 export const useDailyImageViewModel = () => {
   const [dailyImage, setDailyImage] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [warning, setWarning] = useState(null);
 
   const fetchDailyImage = async () => {
     setLoading(true);
     setError(null);
+    setWarning(null);
 
     const result = await getDailyImage();
 
     if (result.success) {
       setDailyImage(result.data);
+      if (result.warning)
+        setWarning(result.warning);
     } else {
       setError(result.error);
     }
@@ -25,5 +29,5 @@ export const useDailyImageViewModel = () => {
     fetchDailyImage();
   }, []);
 
-  return {dailyImage, loading, error, fetchDailyImage};
+  return {dailyImage, loading, error, warning, fetchDailyImage};
 };
