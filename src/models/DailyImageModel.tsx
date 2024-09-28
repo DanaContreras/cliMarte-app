@@ -1,10 +1,9 @@
 import {format} from 'date-fns';
-import {fetchDailyImage} from '../services/ApiService';
+import {fetchDailyImage} from '../services/ApiAPODService';
 import {toZonedTime} from 'date-fns-tz';
 import RNFS from 'react-native-fs';
-import { deleteComments } from './CommentsModel';
-
-const path = RNFS.DocumentDirectoryPath + '/dailyImage.json';
+import { readFile, saveFile, fileExists, deleteFile } from '../services/StorageService';
+import { PATHS } from '../constans/storagePaths';
 
 interface Result {
 	success: boolean;
@@ -26,18 +25,17 @@ interface Result {
       const date = new Date();
       const zonedDate = toZonedTime(date, timeZone);
       const currentDate = format(zonedDate, 'yyyy-MM-dd');
-      
+ 
       if (currentDate < '1995-06-16') {
         result.error = 'La fecha actual es menor a la permitida.';
       } else {
-        const localExists = await RNFS.exists(path);
-        if (localExists) {
-          const localData = await getLocalData();
+        if (await fileExists(PATHS.DAILY_IMAGE)) {
+          const localData = await readFile(PATHS.DAILY_IMAGE);
           if (localData.date !== currentDate) {
             const apiResponse = await fetchDailyImage(currentDate);
             if (apiResponse.success) {
-              await saveData(apiResponse.data);
-              deleteComments();
+              await saveFile(PATHS.DAILY_IMAGE, apiResponse.data);
+              await deleteFile(PATHS.COMMENTS);
               result.success = true;
               result.data = apiResponse.data;
             } else {
@@ -52,7 +50,7 @@ interface Result {
         } else {
           const apiResponse = await fetchDailyImage(currentDate);
           if (apiResponse.success) {
-            await saveData(apiResponse.data);
+            await saveFile(PATHS.DAILY_IMAGE, apiResponse.data);
             result.success = true;
             result.data = apiResponse.data;
           } else {
@@ -67,21 +65,3 @@ interface Result {
   
     return result;
   };
-
-const getLocalData = async () => {
-  try {
-    const data = await RNFS.readFile(path, 'utf8');
-    return JSON.parse(data);
-  } catch (error) {
-    console.error('Error leyendo los datos locales:', error);
-    return null;
-  }
-};
-
-const saveData = async (data: any) => {
-  try {
-    await RNFS.writeFile(path, JSON.stringify(data), 'utf8');
-  } catch (error) {
-    console.error('Error guardando los datos localmente:', error);
-  }
-};

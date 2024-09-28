@@ -32,7 +32,8 @@ export const styles = StyleSheet.create({
   titleText: {
     color: COLORS.lightOrange,
     alignSelf: 'center',
-    textAlign: 'center'
+    textAlign: 'center',
+    marginBottom: SIZES.margin * 2,
   },
   infoText: {
     color: COLORS.gray
@@ -56,5 +57,27 @@ export const styles = StyleSheet.create({
     width: '80%',
     alignSelf: 'center',
     margin: SIZES.margin
+  },
+  actIndicator : {
+    marginVertical: SIZES.margin * 4,
+    alignSelf: 'center',
+  },
+  containerErrorText: {
+    flex: 1,
+    paddingHorizontal: SIZES.padding * 2,
+    paddingTop: SIZES.padding * 2,
+    alignItems: 'center',
+  },
+  errorText: {
+    color: COLORS.white,
+    alignSelf: 'center',
+    textAlign: 'center'
+  },
+  warningContainer: {
+    backgroundColor: COLORS.orange,
+    padding: SIZES.padding,
+    borderRadius: SIZES.radius3,
+    marginBottom: SIZES.margin * 4,
+    alignSelf: 'center',
   },
 });
