@@ -7,65 +7,24 @@ import {styles} from '../HistorialScreen/styles';
 import {Header} from '../../components/Header/Header';
 import {StackScreenProps} from '@react-navigation/stack';
 import SolCard from '../../components/SolCard/SolCard';
+import { useHistorialViewModel } from '../../viewModels/useHistorialViewModel';
+import { ActivityIndicator } from 'react-native';
 
 interface Props extends StackScreenProps<any, any> {}
 
-const data = [
-  {
-    id: 1,
-    sol: 568,
-    temper: -58,
-    minTemper: -74,
-    maxTemper: 74,
-    pr: 58,
-    minPr: -74,
-    maxPr: 74,
-    wind: 58,
-    minWind: 74,
-    maxWind: 74,
-  },
-  {
-    id: 2,
-    sol: 567,
-    temper: -58,
-    minTemper: -74,
-    maxTemper: 74,
-    pr: 58,
-    minPr: -74,
-    maxPr: 74,
-    wind: 58,
-    minWind: 74,
-    maxWind: 74,
-  },
-  {
-    id: 3,
-    sol: 566,
-    temper: -58,
-    minTemper: -74,
-    maxTemper: 74,
-    pr: 58,
-    minPr: -74,
-    maxPr: 74,
-    wind: 58,
-    minWind: 74,
-    maxWind: 74,
-  },
-  {
-    id: 4,
-    sol: 565,
-    temper: -58,
-    minTemper: -74,
-    maxTemper: 74,
-    pr: 58,
-    minPr: -74,
-    maxPr: 74,
-    wind: 58,
-    minWind: 74,
-    maxWind: 74,
-  },
-];
-
 export const HistorialScreen = ({navigation}: Props) => {
+
+  const { weatherData, loading, loadMoreWeatherData, hasMore } = useHistorialViewModel();
+
+  const renderFooter = () => {
+    if (!hasMore) return null;
+    return (
+    <View style={styles.loading}>
+      <ActivityIndicator size="large" color='white'/>
+    </View>
+    )
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor={COLORS.darkBlue} translucent={true} barStyle='light-content' />
@@ -74,28 +33,33 @@ export const HistorialScreen = ({navigation}: Props) => {
         start={{x: 0.5, y: 0.5}}
         style={styles.linearGradient}>
         <FlatList
-          data={data}
+          data={weatherData}
           renderItem={({item}) => (
             <SolCard
               sol={item.sol}
-              temper={item.temper}
-              minTemper={item.minTemper}
-              maxTemper={item.maxTemper}
-              pr={item.pr}
-              minPr={item.minPr}
-              maxPr={item.maxPr}
-              wind={item.wind}
-              minWind={item.minWind}
-              maxWind={item.maxWind}
+              temper={Math.round(item.AT.av)}
+              minTemper={Math.round(item.AT.mn)}
+              maxTemper={Math.round(item.AT.mx)}
+              pr={Math.round(item.PRE.av)}
+              minPr={Math.round(item.PRE.mn)}
+              maxPr={Math.round(item.PRE.mx)}
+              wind={Math.round(item.HWS.av)}
+              minWind={Math.round(item.HWS.mn)}
+              maxWind={Math.round(item.HWS.mx)}
             />
           )}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item.sol}
           ListHeaderComponent={
             <Header
               title={SCREEN_OPTION.historial}
               onPress={() => navigation.navigate(SCREEN_NAV.home)}
             />
           }
+          onEndReached={() => {
+            if (hasMore && !loading) loadMoreWeatherData();
+          }}
+          onEndReachedThreshold={1}
+          ListFooterComponent={renderFooter}
         />
       </LinearGradient>
     </View>

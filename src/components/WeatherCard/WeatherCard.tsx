@@ -22,7 +22,7 @@ export const WeatherCard = ({name, av, min, max}: Props) => {
     return (
       <View style={styles.measur}>
         <Text style={[FONTS.h3, styles.color]}>{type}</Text>
-        <Text style={[FONTS.h3, styles.color]}>{value}</Text>  
+        <Text style={[FONTS.h3, styles.color]}>{Math.round(value)}</Text>  
       </View>
     )
   }
@@ -33,7 +33,7 @@ export const WeatherCard = ({name, av, min, max}: Props) => {
       <Divider width={0.7}/>
       <View style={styles.rowContainer}>
         <View style={styles.avContainer}>
-          <Text style={[FONTS.fontRegular, styles.avText, styles.colorAv]} numberOfLines={1} adjustsFontSizeToFit>{av}°C</Text>
+          <Text style={[FONTS.fontRegular, styles.avText, styles.colorAv]} numberOfLines={1} adjustsFontSizeToFit>{Math.round(av)}°C</Text>
           <Text style={[FONTS.h3, styles.colorAv]} numberOfLines={1} adjustsFontSizeToFit>{MEASU_OPTION.av}</Text>
         </View>
         <View style={styles.measurContainer}>

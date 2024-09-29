@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Text, View } from 'react-native';
 import { styles } from './styles';
 import { Divider } from '@rneui/base';
@@ -26,7 +26,7 @@ interface MeasurementView {
   max: number
 }
 
-const SolCard = ({
+const SolCard = memo(({
   sol,
   temper,
   minTemper,
@@ -75,6 +75,6 @@ const SolCard = ({
       </View>
     </View>
   );
-};
+});
 
 export default SolCard;
