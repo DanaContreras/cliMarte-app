@@ -48,7 +48,7 @@ export const MenuContent = ({navigation}: DrawerContentComponentProps) => {
               <Divider style={styles.divider} />
               <CustomButton
                 text={SCREEN_OPTION.aboutUs}
-                onPress={() => navigation.navigate('HomeScreen')}
+                onPress={() => navigation.navigate(SCREEN_NAV.aboutUs)}
                 color={COLORS.transparent}
                 style={[styles.button, styles.buttonEnd]}
                 textStyle={styles.button}
