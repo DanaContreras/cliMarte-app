@@ -28,8 +28,10 @@ export const getComments = async () => {
 export const addComment = async (comment: Comment) => {
   try {
     let data = [];
-    if (await fileExists(PATHS.COMMENTS))
-        data = await readFile(PATHS.COMMENTS);
+    if (await fileExists(PATHS.COMMENTS)) {
+      data = await readFile(PATHS.COMMENTS);
+      data = JSON.parse(data);
+    }
     data.push(comment);
     await saveFile(PATHS.COMMENTS, JSON.stringify(data));
   } catch (error: any) {
