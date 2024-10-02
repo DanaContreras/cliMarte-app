@@ -8,9 +8,10 @@ export const fetchDailyImage = async (date: string) => {
       );
       if (!response.ok) {
         result = { success: false, error: `Error: ${response.status} ${response.statusText}` };
+      } else {
+        const data = await response.json();
+        result = { success: true, data };
       }
-      const data = await response.json();
-      result = { success: true, data };
     } catch (error: any) {
         result = { success: false, error: error.message || 'Error inesperado.' };
     }

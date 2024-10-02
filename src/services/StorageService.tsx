@@ -34,10 +34,8 @@ const readFile = async (filePath: string) => {
 const deleteFile = async (filePath: string) => {
 	try {
     const fileExists = await RNFS.exists(filePath);
-    if (fileExists) {
+    if (fileExists)
       await RNFS.unlink(filePath);
-      console.log('Archivo eliminado exitosamente:', filePath);
-    }
   } catch (error) {
     console.error('Error eliminando el archivo:', error);
   }
