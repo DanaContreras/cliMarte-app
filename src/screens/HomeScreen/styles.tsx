@@ -55,5 +55,6 @@ export const styles = StyleSheet.create({
   },
   textPlace: {
     margin: 10,
-  }
+    color: COLORS.gray
+  },
 });

@@ -12,6 +12,7 @@ import { place } from '../../constans/information';
 import { useDailyImageViewModel } from '../../viewModels/useDailyImageViewModel';
 import { useWeatherHomeViewModel } from '../../viewModels/useHomeViewModel';
 import * as Animatable from 'react-native-animatable';
+import { Footer } from '../../components/Footer/Footer';
 
 interface Props extends StackScreenProps<any,any>{}
 
@@ -33,16 +34,16 @@ export const HomeScreen = ({navigation}: Props) => {
         }
         <View style={styles.tempContainer}>
           <View style={styles.celsiusContainer}>
-            <Animatable.Text animation='pulse' iterationCount='infinite' iterationDelay={5000} style={[styles.textTemp, {color: 'white'}]}>
-              {-57}
+            <Animatable.Text animation='pulse' iterationCount='infinite' iterationDelay={1000} style={[styles.textTemp, {color: 'white'}]}>
+              {loading? 0 : (Math.round(weatherToday.AT.av))}
             </Animatable.Text>
             <Text style={[FONTS.h1, styles.fixMargin, {color: 'white'}]}>°C</Text>
           </View>
-          <Text style={[FONTS.h2, {color: 'white'}]}>Sol 325</Text>
+          <Text style={[FONTS.h2, {color: 'white'}]}>{loading? ('-') : (`Sol ${weatherToday.sol}`)}</Text>
         </View>
         <View style={styles.footerImg}>
           <Icon name={ICON_NAME.camera} color={COLORS.white} size={SIZES.icon2} onPress={() => navigation.navigate(SCREEN_NAV.dailyImg)}/>
-          <Text style={[FONTS.h2, styles.textPlace, {color: COLORS.gray}]}>{place}</Text>
+          <Text style={[FONTS.h2, styles.textPlace]}>{place}</Text>
         </View>
       </View>
       <View style={styles.menuIconContainer}>
