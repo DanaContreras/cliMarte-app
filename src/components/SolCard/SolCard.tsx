@@ -40,6 +40,9 @@ const SolCard = memo(({
 }: Props) => {
  
   const MeasurementView = ({name, av, min, max}: MeasurementView) => {
+    av = Math.round(av);
+    min = Math.round(min);
+    max = Math.round(max);
     return(
       <View style={styles.indivMeasuContainer}>
         <View style={styles.row}>

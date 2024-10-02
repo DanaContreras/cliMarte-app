@@ -33,11 +33,13 @@ export const DailyImageScreen = ({navigation}: Props) => {
         {error?
           <View style={styles.containerErrorText}>
             <Text style={[FONTS.h3, styles.errorText]}>{error}</Text>
-            <IconMC
-              name={ICON_NAME.alien}
-              color={COLORS.lightOrange}
-              size={SIZES.bigIcon}
-            />
+            <View style={styles.errorIcon}>
+              <IconMC
+                name={ICON_NAME.alien}
+                color={COLORS.lightOrange}
+                size={SIZES.bigIcon}
+              />
+            </View>
           </View>
           :
           <View>

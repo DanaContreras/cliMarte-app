@@ -65,7 +65,7 @@ export const styles = StyleSheet.create({
   containerErrorText: {
     flex: 1,
     paddingHorizontal: SIZES.padding * 2,
-    paddingTop: SIZES.padding * 2,
+    paddingTop: SIZES.padding * 6,
     alignItems: 'center',
   },
   errorText: {
@@ -79,5 +79,8 @@ export const styles = StyleSheet.create({
     borderRadius: SIZES.radius3,
     marginBottom: SIZES.margin * 4,
     alignSelf: 'center',
+  },
+  errorIcon: {
+    marginVertical: SIZES.margin * 4,
   },
 });

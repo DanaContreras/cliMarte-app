@@ -34,21 +34,22 @@ export const HistorialScreen = ({navigation}: Props) => {
         style={styles.linearGradient}>
         <FlatList
           data={weatherData}
+          initialNumToRender={4}
           renderItem={({item}) => (
             <SolCard
               sol={item.sol}
-              temper={Math.round(item.AT.av)}
-              minTemper={Math.round(item.AT.mn)}
-              maxTemper={Math.round(item.AT.mx)}
-              pr={Math.round(item.PRE.av)}
-              minPr={Math.round(item.PRE.mn)}
-              maxPr={Math.round(item.PRE.mx)}
-              wind={Math.round(item.HWS.av)}
-              minWind={Math.round(item.HWS.mn)}
-              maxWind={Math.round(item.HWS.mx)}
+              temper={item.AT.av}
+              minTemper={item.AT.mn}
+              maxTemper={item.AT.mx}
+              pr={item.PRE.av}
+              minPr={item.PRE.mn}
+              maxPr={item.PRE.mx}
+              wind={item.HWS.av}
+              minWind={item.HWS.mn}
+              maxWind={item.HWS.mx}
             />
           )}
-          keyExtractor={item => item.sol}
+          keyExtractor={(item) => item.sol}
           ListHeaderComponent={
             <Header
               title={SCREEN_OPTION.historial}
@@ -58,7 +59,7 @@ export const HistorialScreen = ({navigation}: Props) => {
           onEndReached={() => {
             if (hasMore && !loading) loadMoreWeatherData();
           }}
-          onEndReachedThreshold={1}
+          onEndReachedThreshold={0.8}
           ListFooterComponent={renderFooter}
         />
       </LinearGradient>
