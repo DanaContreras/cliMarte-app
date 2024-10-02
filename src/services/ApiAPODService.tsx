@@ -1,4 +1,4 @@
-export const API_KEY = 'MtSNGxGmHjAjxWNiT4aiNdMucvljOJUVA9ju6OLy';
+const API_KEY = '';
 
 export const fetchDailyImage = async (date: string) => {
     let result;
