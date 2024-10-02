@@ -1,79 +1,65 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# CliMarte
 
-# Getting Started
+## Presentación
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+**CliMarte tiene la misión de difundir sobre el planeta a 225 millones de km de la Tierra, Marte.** Proporciona diferentes datos meteorológicos que provee la NASA en la misión **InSight**. También ofrece una **imagen diaria** para aprender y comentar. Con esta aplicación, se pueden obtener datos actualizados sobre el clima de Marte, ver la imagen del día capturada por la NASA y explorar el historial meteorológico marciano.
 
-## Step 1: Start the Metro Server
+### Funcionalidades principales
+- **Inicio (Home):** Visualiza los datos meteorológicos del sol (día marciano) actual.
+- **Imagen del Día:** Disfruta de la imagen diaria proporcionada por la API **APOD** de la NASA.
+- **Historial:** Permite desplazarse a través de los soles más recientes hasta los más antiguos.
+- **Acerca de Nosotros (About Us):** Conoce más sobre el proyecto y su misión.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+![Logo CliMarte](./src/assets/images/logo_readme.png)
 
-To start Metro, run the following command from the _root_ of your React Native project:
 
-```bash
-# using npm
-npm start
+## Guía para ejecutar el proyecto localmente
 
-# OR using Yarn
-yarn start
-```
+### Requisitos previos
 
-## Step 2: Start your Application
+Asegurarse de tener las siguientes herramientas instaladas:
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+- **npm**.
+- **React Native CLI**.
+- **Android Studio** para emular la aplicación en un dispositivo Android.
+- **Git** para clonar el repositorio.
 
-### For Android
+### Instrucciones de instalación
 
-```bash
-# using npm
-npm run android
+1. **Clonar el repositorio**
 
-# OR using Yarn
-yarn android
-```
+   Clonar el repositorio del proyecto en local:
 
-### For iOS
+   ```bash
+   git clone https://github.com/DanaContreras/cliMarte-app.git
+   ```
 
-```bash
-# using npm
-npm run ios
+2. **Instalar dependencias**
 
-# OR using Yarn
-yarn ios
-```
+   Acceder al directorio del proyecto e instalar las dependiencias:
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+   ```bash
+   npm install
+   ```
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+3. **Agregar API key de la NASA**
 
-## Step 3: Modifying your App
+   Ir a src/services/ApiAPODService.tsx y agregar la API key:
 
-Now that you have successfully run the app, let's modify it.
+   ```javascript
+   const API_KEY = 'Mi_Api_Key';
+   ```
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+4. **Ejecutar metro**
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+   ```bash
+   npm start
+   ```
 
-## Congratulations! :tada:
+5. **Ejecutar aplicación**
 
-You've successfully run and modified your React Native App. :partying_face:
+   Se puede realizar por medio de metro o en la consola escribir el siguiente comando:
 
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+   ```bash
+   npm run android
+   ```
