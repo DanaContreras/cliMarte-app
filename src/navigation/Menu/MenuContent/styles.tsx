@@ -1,6 +1,8 @@
 import {Dimensions, StyleSheet} from 'react-native';
 import {COLORS, SIZES} from '../../../constans/theme';
 
+const { height } = Dimensions.get('window');
+
 export const styles = StyleSheet.create({
   drawContainer: {
     paddingTop: 0,
@@ -32,6 +34,14 @@ export const styles = StyleSheet.create({
   divider: {
     backgroundColor: COLORS.orange,
     height: 1,
+    marginTop: (SIZES.height + 50) / 2,
+    width: '90%',
+    alignSelf: 'center',
+  },
+  dividerLandscape: {
+    backgroundColor: COLORS.orange,
+    height: 1,
+    marginTop: 100 / 2,
     width: '90%',
     alignSelf: 'center',
   },

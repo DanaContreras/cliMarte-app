@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from 'react';
-import {ScrollView} from 'react-native-gesture-handler';
+import React, {useState} from 'react';
 import {styles} from './styles';
 import LinearGradient from 'react-native-linear-gradient';
 import {COLORS, FONTS, SIZES} from '../../constans/theme';
@@ -10,8 +9,7 @@ import {ActivityIndicator, Alert, FlatList, Image, Pressable, Text, View} from '
 import {CommentView} from '../../components/CommentView/CommentView';
 import Icon from 'react-native-vector-icons/Ionicons';
 import IconMC from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Modal} from 'react-native';
-import { color, Divider } from '@rneui/base';
+import { Divider } from '@rneui/base';
 import { CommentModal } from '../../components/CommentModal/CommentModal';
 import { useDailyImageViewModel } from '../../viewModels/useDailyImageViewModel';
 import { useCommentsViewModel } from '../../viewModels/useCommentsViewModel'

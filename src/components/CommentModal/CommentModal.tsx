@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Alert, Modal, Pressable, TextInput, View} from 'react-native';
+import {Alert, Modal, Pressable, ScrollView, TextInput, View} from 'react-native';
 import {styles} from './styles';
 import {Text} from 'react-native';
 import {
@@ -59,7 +59,7 @@ export const CommentModal = ({visible, onRequestClose, onAddComment}: Props) => 
       visible={visible}
       onRequestClose={onRequestClose}
       style={styles.modal}>
-      <View style={styles.background}>
+      <ScrollView style={styles.background}>
         <View style={styles.container}>
           <View style={styles.titleContainer}>
             <View style={styles.iconContainer}>
@@ -126,7 +126,7 @@ export const CommentModal = ({visible, onRequestClose, onAddComment}: Props) => 
             )}
           </Formik>
         </View>
-      </View>
+      </ScrollView>
     </Modal>
   );
 };

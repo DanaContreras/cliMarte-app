@@ -2,7 +2,7 @@ import {
   DrawerContentComponentProps,
   DrawerContentScrollView,
 } from '@react-navigation/drawer';
-import { View } from 'react-native';
+import { ScrollView, useWindowDimensions, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { AnimatedLogo } from '../../../components/AnimatedLogo/AnimatedLogo';
 import CustomButton from '../../../components/CustomButton/CustomButton';
@@ -18,6 +18,9 @@ interface MenuButton {
 
 export const MenuContent = ({navigation}: DrawerContentComponentProps) => {
 
+  const { width, height } = useWindowDimensions();
+  const isPortrait = height >= width;
+
   const MenuButton = ({title, screenNav}: MenuButton) => {
     return (
       <CustomButton
@@ -32,7 +35,7 @@ export const MenuContent = ({navigation}: DrawerContentComponentProps) => {
 
   return (
     <DrawerContentScrollView contentContainerStyle={styles.drawContainer}>
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <LinearGradient
           colors={[COLORS.darkBlue, COLORS.blue]}
           start={{x: 0.5, y: 0.6}}
@@ -45,7 +48,7 @@ export const MenuContent = ({navigation}: DrawerContentComponentProps) => {
             <MenuButton title={SCREEN_OPTION.historial} screenNav={SCREEN_NAV.historial}/>
             <MenuButton title={SCREEN_OPTION.dailyImg} screenNav={SCREEN_NAV.dailyImg}/>
             <View style={styles.containerButtonEnd}>
-              <Divider style={styles.divider} />
+              <Divider style={isPortrait? styles.divider : styles.dividerLandscape} />
               <CustomButton
                 text={SCREEN_OPTION.aboutUs}
                 onPress={() => navigation.navigate(SCREEN_NAV.aboutUs)}
@@ -56,7 +59,7 @@ export const MenuContent = ({navigation}: DrawerContentComponentProps) => {
             </View>
           </View>
         </LinearGradient>
-      </View>
+      </ScrollView>
     </DrawerContentScrollView>
   );
 };

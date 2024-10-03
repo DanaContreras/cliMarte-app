@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { HomeScreen } from '../../screens/HomeScreen/HomeScreen';
 import { DailyImageScreen } from '../../screens/DailyImageScreen/DailyImageScreen';
@@ -6,10 +6,19 @@ import { MenuContent } from './MenuContent/MenuContent';
 import { SCREEN_NAV } from '../../constans/constans';
 import { HistorialScreen } from '../../screens/HistorialScreen/HistorialScreen';
 import { AboutUsScreen } from '../../screens/AboutUsScreen/AboutUsScreen';
+import Orientation from 'react-native-orientation-locker';
 
 const Drawer = createDrawerNavigator();
 
 const Menu = () => {
+
+  useEffect(() => {
+    Orientation.unlockAllOrientations();
+    return () => {
+      Orientation.lockToPortrait();
+    };
+  }, []);
+
   return (
     <Drawer.Navigator
       drawerContent={ (props) => <MenuContent {...props}/>}

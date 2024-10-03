@@ -1,5 +1,7 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 import { COLORS, FONTS, SIZES } from '../../constans/theme';
+
+const { width, height } = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
   container: {
@@ -17,13 +19,25 @@ export const styles = StyleSheet.create({
 	containerImg: {
 		flex: 1,
 	},
-  img: {
+  imgPortrait: {
     width: SIZES.width,
     height: SIZES.width * 1.8,
+  },
+  imgLandscape: {
+    width: '100%',
+    height: height + 50
   },
   footerImg: {
     position: 'absolute',
     top: SIZES.height / 1.28,
+    left: 0,
+    right: 0,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  footerImgLandscape: {
+    position: 'absolute',
+    top: height - 70,
     left: 0,
     right: 0,
     flexDirection: 'row',
@@ -37,6 +51,14 @@ export const styles = StyleSheet.create({
   tempContainer: {
     position: 'absolute',
     top: SIZES.height / 3,
+    left: 0,
+    right: 0,
+    alignContent: 'center',
+    alignItems: 'center',
+  },
+  tempContainerLandscape: {
+    position: 'absolute',
+    top: height / 3,
     left: 0,
     right: 0,
     alignContent: 'center',

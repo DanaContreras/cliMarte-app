@@ -1,5 +1,5 @@
 import React from 'react';
-import {ActivityIndicator, Image, ScrollView, StatusBar, Text, View} from 'react-native';
+import {ActivityIndicator, Image, ScrollView, StatusBar, Text, useWindowDimensions, View} from 'react-native';
 import { styles } from './styles';
 import LinearGradient from 'react-native-linear-gradient';
 import { COLORS, FONTS, SIZES } from '../../constans/theme';
@@ -12,27 +12,26 @@ import { place } from '../../constans/information';
 import { useDailyImageViewModel } from '../../viewModels/useDailyImageViewModel';
 import { useWeatherHomeViewModel } from '../../viewModels/useHomeViewModel';
 import * as Animatable from 'react-native-animatable';
-import { Footer } from '../../components/Footer/Footer';
 
 interface Props extends StackScreenProps<any,any>{}
 
 export const HomeScreen = ({navigation}: Props) => {
   const { dailyImage, error } = useDailyImageViewModel();
-  const { weatherToday, loading, loadWeatherToday } = useWeatherHomeViewModel();
+  const { weatherToday, loading } = useWeatherHomeViewModel();
+  const { width, height } = useWindowDimensions();
+
+  const isPortrait = height >= width;
 
   return(
     <ScrollView style={styles.container}>
       <StatusBar backgroundColor="transparent" translucent={true} barStyle='light-content' />
       <View style={styles.containerImg}>
         {error || dailyImage == null || dailyImage.media_type != 'image' ?
-          <Image source={require('../../assets/images/imagenMarte1.jpg')} style={styles.img}/>
+          <Image source={require('../../assets/images/imagenMarte1.jpg')} style={isPortrait? styles.imgPortrait : styles.imgLandscape}/>
           :
-          <Image
-          source={{ uri: dailyImage.url }}
-          style={styles.img}
-          />
+          <Image source={{ uri: dailyImage.url }} style={isPortrait? styles.imgPortrait : styles.imgLandscape} />
         }
-        <View style={styles.tempContainer}>
+        <View style={isPortrait? styles.tempContainer : styles.tempContainerLandscape}>
           <View style={styles.celsiusContainer}>
             <Animatable.Text animation='pulse' iterationCount='infinite' iterationDelay={1000} style={[styles.textTemp, {color: 'white'}]}>
               {loading? 0 : (Math.round(weatherToday.AT.av))}
@@ -41,7 +40,7 @@ export const HomeScreen = ({navigation}: Props) => {
           </View>
           <Text style={[FONTS.h2, {color: 'white'}]}>{loading? ('-') : (`Sol ${weatherToday.sol}`)}</Text>
         </View>
-        <View style={styles.footerImg}>
+        <View style={isPortrait? styles.footerImg : styles.footerImgLandscape}>
           <Icon name={ICON_NAME.camera} color={COLORS.white} size={SIZES.icon2} onPress={() => navigation.navigate(SCREEN_NAV.dailyImg)}/>
           <Text style={[FONTS.h2, styles.textPlace]}>{place}</Text>
         </View>
