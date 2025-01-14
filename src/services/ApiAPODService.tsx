@@ -1,10 +1,8 @@
-const API_KEY = '';
-
 export const fetchDailyImage = async (date: string) => {
     let result;
     try {
       const response = await fetch(
-        `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${date}`,
+        `http://10.0.2.2:3000/api/imagenes/${date}`
       );
       if (!response.ok) {
         result = { success: false, error: `Error: ${response.status} ${response.statusText}` };
@@ -13,7 +11,7 @@ export const fetchDailyImage = async (date: string) => {
         result = { success: true, data };
       }
     } catch (error: any) {
-        result = { success: false, error: error.message || 'Error inesperado.' };
+      result = { success: false, error: error.message || 'Error inesperado.' };
     }
     return result;
   };
