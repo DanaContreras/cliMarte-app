@@ -101,7 +101,7 @@ export const DailyImageScreen = ({navigation}: Props) => {
         data={comments}
         renderItem={({item}) => (
           <CommentView
-            name={item.userName}
+            name={item.username}
             date={new Date(item.date)}
             comment={item.comment}
           />

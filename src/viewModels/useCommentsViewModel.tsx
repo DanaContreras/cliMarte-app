@@ -13,15 +13,15 @@ export const useCommentsViewModel = () => {
   }, []);
 
   const handleAddComment = async (
-    userName: string,
+    username: string,
     mail: string,
     comment: string,
   ) => {
     const newComment: Comment = {
-      userName: userName,
+      username: username,
       mail: mail,
       comment: comment,
-      date: new Date(),
+      date: new Date().toISOString(),
     };
 
     try {

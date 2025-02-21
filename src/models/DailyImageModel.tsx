@@ -1,7 +1,6 @@
 import {format} from 'date-fns';
 import {fetchDailyImage} from '../services/ApiAPODService';
 import {toZonedTime} from 'date-fns-tz';
-import RNFS from 'react-native-fs';
 import { readFile, saveFile, fileExists, deleteFile } from '../services/StorageService';
 import { PATHS } from '../constans/storagePaths';
 
