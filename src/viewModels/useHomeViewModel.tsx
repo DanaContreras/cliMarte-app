@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getWeatherToday } from '../models/WeatherlModel';
 
 export const useWeatherHomeViewModel = () => {
 
-	const [weatherToday, setWeatherToday] = React.useState();
-	const [loading, setLoading] = React.useState(true);
+	const [weatherToday, setWeatherToday] = useState();
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		loadWeatherToday();

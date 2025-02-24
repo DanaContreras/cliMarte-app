@@ -26,6 +26,7 @@ export const useHistorialViewModel = () => {
   const loadMoreWeatherData = async () => {
     setLoading(true);
     const responseData = await getWeatherInRange(page - 3, page);
+    
     if (responseData.success) {
       const newWeatherData = responseData.data;
       if (newWeatherData.length > 0) {

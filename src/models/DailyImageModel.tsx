@@ -24,6 +24,7 @@ interface Result {
       const date = new Date();
       const zonedDate = toZonedTime(date, timeZone);
       const currentDate = format(zonedDate, 'yyyy-MM-dd');
+      //const currentDate = '2025-01-02';
  
       if (currentDate < '1995-06-16') {
         result.error = 'La fecha actual es menor a la permitida.';

@@ -10,7 +10,7 @@ const placeAnswer = 'Situada en los cuadrángulos de Elysium y Aeolis, es una am
 const solQuestion = '¿Sabías qué es un SOL?';
 const solAnswer = 'El término SOL es usado por los ingenieros de la NASA en las misiones a Marte para referirse a un día solar en Marte. El día solar marciano es el período entre dos pasos consecutivos del Sol por un meridiano de Marte, y dura 24 horas 39 minutos 35,244 segundos. Es aproximadamente un 3% más largo que el día solar terrestre.';
 
-const copyright = 'Copyright © 2024. Todos los derechos reservados.';
+const copyright = 'Copyright © 2025. Todos los derechos reservados.';
 const developer = 'Desarrollado por Dana Contreras.';
 
 // links

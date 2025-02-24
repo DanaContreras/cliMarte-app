@@ -24,7 +24,7 @@ export const HomeScreen = ({navigation}: Props) => {
 
   return(
     <ScrollView style={styles.container}>
-      <StatusBar backgroundColor="transparent" translucent={true} barStyle='light-content' />
+      <StatusBar backgroundColor='transparent' translucent={true} barStyle='light-content' />
       <View style={styles.containerImg}>
         {error || dailyImage == null || dailyImage.media_type != 'image' ?
           <Image source={require('../../assets/images/imagenMarte1.jpg')} style={isPortrait? styles.imgPortrait : styles.imgLandscape}/>

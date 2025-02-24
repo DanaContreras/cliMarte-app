@@ -24,7 +24,10 @@ export const fetchDailyComments = async (date: string) => {
   ) => {
     let result;
     try {
-      const response = await fetch(`http://10.0.2.2:3000/api/comentarios`, {
+      const response = await fetch(
+        `http://10.0.2.2:3000/api/comentarios`
+        //`http://localhost:3000/api/comentarios` 
+         ,{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

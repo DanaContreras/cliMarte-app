@@ -3,6 +3,7 @@ export const fetchDailyImage = async (date: string) => {
     try {
       const response = await fetch(
         `http://10.0.2.2:3000/api/imagenes/${date}`
+        //`http://localhost:3000/api/imagenes/${date}`
       );
       if (!response.ok) {
         result = { success: false, error: `Error: ${response.status} ${response.statusText}` };
