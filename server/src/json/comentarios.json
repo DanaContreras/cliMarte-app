@@ -1,0 +1,46 @@
+{
+    "2024-12-29": [
+        {
+            "username": "Alex",
+            "mail": "alex@ok.com",
+            "comment": "Me encanta.",
+            "date": "2024-12-29T10:20:30.400Z"
+        },
+        {
+            "username": "Dan",
+            "mail": "alex@ok.com",
+            "comment": "Me encanta.",
+            "date": "2024-12-29T10:20:30.400Z"
+        }
+    ],
+    "2024-12-31": [
+        {
+            "username": "Danaa",
+            "mail": "alex@ok.com",
+            "comment": "Me gusta bastante bastante.",
+            "date": "2025-01-30T18:44:41.094Z"
+        }
+    ],
+    "2025-02-21": [
+        {
+            "username": "Dana :D",
+            "mail": "dana@gmail.com",
+            "comment": "La imagen es muy interesante.",
+            "date": "2025-02-21T12:55:25.015Z"
+        },
+        {
+            "username": "Alex",
+            "mail": "alex@aa.com",
+            "comment": "Contenido muy informativo, gracias!",
+            "date": "2025-02-21T12:59:00.994Z"
+        }
+    ],
+    "2025-02-24": [
+        {
+            "username": "Pedro",
+            "mail": "ped@gmail.com",
+            "comment": "La imagen es muy bella.",
+            "date": "2025-02-24T19:27:00.171Z"
+        }
+    ]
+}
