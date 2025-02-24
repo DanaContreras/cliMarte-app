@@ -10,7 +10,7 @@
 - **Historial:** Permite desplazarse a través de los soles más recientes hasta los más antiguos.
 - **Acerca de Nosotros (About Us):** Conoce más sobre el proyecto y su misión.
 
-![Logo CliMarte](./src/assets/images/logo_readme.png)
+![Logo CliMarte](./cliMarteApp/src/assets/images/logo_readme.png)
 
 
 ## Guía para ejecutar el proyecto localmente
@@ -50,9 +50,17 @@ Asegurarse de tener las siguientes herramientas instaladas:
    const API_KEY = 'Mi_Api_Key';
    ```
 
+4. **Ejecutar servidor**
+
+   ```bash
+   cd server/src/
+   node index.js
+   ```
+
 4. **Ejecutar metro**
 
    ```bash
+   cd cliMarteApp/
    npm start
    ```
 
