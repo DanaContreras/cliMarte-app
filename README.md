@@ -44,7 +44,7 @@ Asegurarse de tener las siguientes herramientas instaladas:
 
 3. **Agregar API key de la NASA**
 
-   Ir a src/services/ApiAPODService.tsx y agregar la API key:
+   Ir a server/js/config.js y agregar la API key:
 
    ```javascript
    const API_KEY = 'Mi_Api_Key';
